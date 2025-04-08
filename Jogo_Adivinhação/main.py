@@ -1,6 +1,6 @@
 import random
 
-#JOGO ADIVINHAÇÃO 
+#JOGO ADIVINHAÇÃO - ATIVADE AVALIATIVA 01
 
 #TELA INICIAL
 print("                ---Seja bem-vindo ao Jogo da Advinhação!!---                  ")
