@@ -14,7 +14,7 @@ print()
 
 #COMEÇAR O JOGO - LOOP WHILE
 
-input("                             <Aperte Enter>")
+input("                              <Aperte ENTER>")
 
 jogar = 1
 while jogar == 1:
@@ -35,7 +35,7 @@ while jogar == 1:
         print(f"--{contTentativa}ª TENTATIVA--")
         codigoTentativa = int(input("Digite sua tentativa: "))
 
-        while 1000 > codigoTentativa or codigoTentatillllva > 9999: #Verificando se o número é válido, se não for, pede o input novamente.
+        while 1000 > codigoTentativa or codigoTentativa > 9999: #Verificando se o número é válido, se não for, pede o input novamente.
             print("ERRO: Você inseriu um número inválido!")
             codigoTentativa=int(input("Digite novamente um número de quatro digitos: "))
 
@@ -77,7 +77,7 @@ while jogar == 1:
         #DICAS:
 
         if contTentativa >= 5:
-
+            print("Aqui vai uma dica:", end=" ")
             dicaEnviada = 0
 
             while dicaEnviada == 0:
@@ -118,15 +118,34 @@ while jogar == 1:
 
                         if nCodigoSecreto % 2 == 0:
                             print(f"O {5-posicaoDica}° número é Par")
+                            dica = "PAR"
                         else:
                             print(f"O {5-posicaoDica}° número é Ímpar")
+                            dica = "ÍMPAR"
 
                     elif tipoDica == 2:
 
                         if nCodigoSecreto >= 5:
                             print(f"O {5-posicaoDica}° número é maior ou igual a 5")
+                            dica = "(>=5)"
                         else:
                             print(f"O {5-posicaoDica}° número é menor que 5")
+                            dica = "(<5)"
+                    print()
+                    for x in range(3,-1,-1):
+
+                        nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x             
+                        nCodigoSecreto = (codigoSecreto % (10**(x+1))) // 10**x
+
+                        if nCodigoTentativa == nCodigoSecreto:
+                            print(nCodigoTentativa, end=" ")
+                        elif x + 1 == posicaoDica:
+                            print(dica, end=" ")
+                        else:
+                            print("_", end=" ")
+                    print()
+                    print()
+                    input("<Aperte ENTER>")
 
 
     print("Você quer jogar novamente? (1 = sim/0 = não) ")
