@@ -53,12 +53,8 @@ while jogar == 1:
 
         for x in range(3,-1,-1): #SEPARANDO O NÚMERO EM 4 DIGITOS
 
-            #Divide o número por 10000 (10^4) e pega o resto, depois divide por 1000 (10^3), definindo a variável como o primeiro dígito e assim por diante.
-
             nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x             
             nCodigoSecreto = (codigoSecreto % (10**(x+1))) // 10**x
-
-            #EX: tentativa = 1234, x = 3, primeiro digito: numero % 10000 // 1000 -> 1234 % 10000 = 1234 -> 1234 // 1000 = 1
 
             if nCodigoTentativa == nCodigoSecreto: #Imprime na tela os números que o jogador acertou, EXEMPLO: 1 _ 3 _
                 print(nCodigoTentativa, end=' ')
@@ -84,34 +80,12 @@ while jogar == 1:
 
                 posicaoDica = random.randint(1,4) # _ _ _ _
 
-                #Define os digitos na (posicaoDica)ª posição da tentativa. EX: se a posição da dica == 3, ele vai achar o terceiro digito.
-
                 nCodigoTentativa = (codigoTentativa % (10**(posicaoDica))) // 10**(posicaoDica-1) 
                 nCodigoSecreto = (codigoSecreto % (10**(posicaoDica))) // 10**(posicaoDica-1)
-                
-                #n1 = codigoTentativa % 10000) // 1000. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 1
-                #n1 = codigoTentativa % 1000) // 100. EX: 1234 => n1 = 1234 % 1000 = 234 => 234 // 100 = 2
-                #n1 = codigoTentativa % 100) // 10. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 3
-                #n1 = codigoTentativa % 10) // 1. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 4
-
-                #s1 = codigoTentativa % 10000) // 1000. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 1
-                #s1 = codigoTentativa % 1000) // 100. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 1
-                #s1 = codigoTentativa % 100) // 10. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 1
-                #s1 = codigoTentativa % 10) // 1. EX: 1234 => n1 = 1234 % 10000 = 1234 => 1234 // 1000 = 1
-
-                #if n1 == s1
-                #if n2 == s2
-                #if n1 == s3
-                #if n2 == s4
-                
-
-                #if ncodigo tentativa == ncodigosecreto:
-
-                #EX: tentativa = 1234, posicaoDica = 1, ultimo digito: numero % 10**1 // 10 ** 0 -> 1234 % 10 = 4 -> 4 // 1 = 4
 
                 if nCodigoTentativa != nCodigoSecreto:
 
-                    tipoDica = random.randint(1,2) #Par/Impar ou <5/>=5
+                    tipoDica = 3 #random.randint(1,3) #Par/Impar ou <5/>=5
                     dicaEnviada = 1
 
                     if tipoDica == 1:
@@ -131,6 +105,20 @@ while jogar == 1:
                         else:
                             print(f"O {5-posicaoDica}° número é menor que 5")
                             dica = "(<5)"
+
+                    elif tipoDica == 3:  #TIPO 3 - SE ALGUM NÚMERO DA TENTATIVA ESTAVA NO LUGAR ERRADO:
+                        for x in range(3,-1,-1):
+             
+                            nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x 
+                            
+                            if nCodigoTentativa == nCodigoSecreto: #Se o nCódigo tentativa na posição X for igual ao número correto da posição da dica:
+                                print(f"Algum número já digitado aparece na posição {x + 1} ")
+                                dica = "O"
+                                break
+                        else:
+                            print("Nenhum número digitado aparece na posição da dica")
+                            dica = "X"
+
                     print()
                     for x in range(3,-1,-1):
 
