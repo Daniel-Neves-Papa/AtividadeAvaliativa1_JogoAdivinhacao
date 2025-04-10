@@ -14,7 +14,7 @@ print()
 
 #COMEÇAR O JOGO - LOOP WHILE
 
-input("                              <Aperte ENTER>")
+input("<Aperte ENTER>".rjust(43))
 
 jogar = 1
 while jogar == 1:
@@ -32,7 +32,7 @@ while jogar == 1:
 
         print()
         
-        print(f"--{contTentativa}ª TENTATIVA--")
+        print(f"--{contTentativa}ª TENTATIVA--".rjust(44))
         codigoTentativa = int(input("Digite sua tentativa: "))
 
         while 1000 > codigoTentativa or codigoTentativa > 9999: #Verificando se o número é válido, se não for, pede o input novamente.
@@ -51,6 +51,8 @@ while jogar == 1:
             print()
             break
 
+        nAcertos = 0
+        print("Seu código é:", end=" ")
         for x in range(3,-1,-1): #SEPARANDO O NÚMERO EM 4 DIGITOS
 
             nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x             
@@ -58,10 +60,14 @@ while jogar == 1:
 
             if nCodigoTentativa == nCodigoSecreto: #Imprime na tela os números que o jogador acertou, EXEMPLO: 1 _ 3 _
                 print(nCodigoTentativa, end=' ')
+                nAcertos += 1
             else:
                 print("_", end=" ")
-
         print()
+        if nAcertos > 0:
+            print(f"Você acertou {nAcertos} digitos nessa tentativa")
+        else:
+            print("Você não acertou nenhum digito nessa tentativa")
         print()
         
         if contTentativa == 10 and codigoTentativa != codigoSecreto:
@@ -85,7 +91,7 @@ while jogar == 1:
 
                 if nCodigoTentativa != nCodigoSecreto:
 
-                    tipoDica = 3 #random.randint(1,3) #Par/Impar ou <5/>=5
+                    tipoDica = random.randint(1,3) #Par/Impar ou <5/>=5
                     dicaEnviada = 1
 
                     if tipoDica == 1:
@@ -112,14 +118,14 @@ while jogar == 1:
                             nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x 
                             
                             if nCodigoTentativa == nCodigoSecreto: #Se o nCódigo tentativa na posição X for igual ao número correto da posição da dica:
-                                print(f"Algum número já digitado aparece na posição {x + 1} ")
-                                dica = "O"
+                                print(f"Algum digito da sua tentativa se encontra na {x + 1}ª posição ")
+                                dica = "Digito"
                                 break
                         else:
-                            print("Nenhum número digitado aparece na posição da dica")
+                            print(f"Nenhum digito da sua tentativa aparece na {x + 1}ª posição")
                             dica = "X"
-
                     print()
+
                     for x in range(3,-1,-1):
 
                         nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x             
@@ -133,7 +139,7 @@ while jogar == 1:
                             print("_", end=" ")
                     print()
                     print()
-                    input("<Aperte ENTER>")
+                    input("<Aperte ENTER>".rjust(43))
 
 
     print("Você quer jogar novamente? (1 = sim/0 = não) ")
