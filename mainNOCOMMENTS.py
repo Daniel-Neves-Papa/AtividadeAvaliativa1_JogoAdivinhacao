@@ -58,7 +58,7 @@ while jogar == 1:
             break
 
         if nDigitosCertos > 0:
-            print(f"Você acertou {nDigitosCertos} digitos nessa tentativa")
+            print(f"Você acertou {nDigitosCertos} digito(s) nessa tentativa")
         else:
             print("Você não acertou nenhum digito nessa tentativa")
         print()
