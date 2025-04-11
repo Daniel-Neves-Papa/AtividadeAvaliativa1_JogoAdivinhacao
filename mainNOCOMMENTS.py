@@ -7,20 +7,20 @@ print(" Nesse jogo, você vai precisar advinhar o número secreto entre [1000 e 
 print("          A partir da 5ª tentativa, o jogo vai te ajudar com dicas.           ")
 print("------------------------------------------------------------------------------")
 print()
-input("<Aperte ENTER>".rjust(43))
+input("                             <Aperte ENTER>")
 
 jogar = 1
 while jogar == 1:
 
     print()
-    print("O JOGO COMEÇOU")
+    print("O JOGO COMEÇOU!!")
 
     codigoSecreto = random.randint(1000,9999)
-    
+
     for contTentativa in range(1,11):
         print()
 
-        print(f"--{contTentativa}ª TENTATIVA--".rjust(44))
+        print(f"                            --{contTentativa}ª TENTATIVA--")
         codigoTentativa = int(input("Digite sua tentativa: "))
 
         while 1000 > codigoTentativa or codigoTentativa > 9999:
@@ -45,15 +45,8 @@ while jogar == 1:
                 print("_", end=" ")
         print()
 
-        if nDigitosCertos > 0:
-            print(f"Você acertou {nDigitosCertos} digitos nessa tentativa")
-        else:
-            print("Você não acertou nenhum digito nessa tentativa")
-        print()
-
         if codigoSecreto == codigoTentativa:
-                    print("PARABÉNS, você acertou o código!!!")
-                    print(f"O código era: {codigoSecreto}")
+                    print("PARABÉNS, VOCÊ ACERTOU O CÓDIGO!!")
                     print(f"Você acertou o código em: {contTentativa} tentativas")
                     print()
                     break
@@ -64,6 +57,12 @@ while jogar == 1:
             print(f"O código era: {codigoSecreto}")
             break
 
+        if nDigitosCertos > 0:
+            print(f"Você acertou {nDigitosCertos} digitos nessa tentativa")
+        else:
+            print("Você não acertou nenhum digito nessa tentativa")
+        print()
+        
         if contTentativa >= 5:
             print("Aqui vai uma dica:", end=" ")
 
@@ -134,7 +133,7 @@ while jogar == 1:
         print("ERRO: Você inseriu um número inválido!")
         print("Você quer jogar novamente? (1 = sim/0 = não)")
         jogar = int(input(">"))
-        
+
     if jogar == 0:
         print()
         print("Obrigado por jogar!!!")
