@@ -80,18 +80,18 @@ while jogar == 1:
 
                     if tipoDica == 1:
                         if nCodigoSecreto % 2 == 0:
-                            print(f"O {5-posicaoDica}° número é Par")
+                            print(f"O {5-posicaoDica}° dígito é Par")
                             dica = "PAR"
                         else:
-                            print(f"O {5-posicaoDica}° número é Ímpar")
+                            print(f"O {5-posicaoDica}° dígito é Ímpar")
                             dica = "ÍMPAR"
 
                     elif tipoDica == 2:
                         if nCodigoSecreto >= 5:
-                            print(f"O {5-posicaoDica}° número é maior ou igual a 5")
+                            print(f"O {5-posicaoDica}° dígito é maior ou igual a 5")
                             dica = "(>=5)"
                         else:
-                            print(f"O {5-posicaoDica}° número é menor que 5")
+                            print(f"O {5-posicaoDica}° dígito é menor que 5")
                             dica = "(<5)"
 
                     elif tipoDica == 3:
@@ -99,11 +99,11 @@ while jogar == 1:
                             nCodigoTentativa = (codigoTentativa % (10**(x+1))) // 10**x 
                             if nCodigoTentativa == nCodigoSecreto:
 
-                                print(f"Algum digito da sua tentativa se encontra na {x + 1}ª posição ")
+                                print(f"Algum digito da sua tentativa se encontra na {5-posicaoDica}ª posição ")
                                 dica = "Digito"
                                 break
                         else:
-                            print(f"Nenhum digito da sua tentativa aparece na {x + 1}ª posição")
+                            print(f"Nenhum digito da sua tentativa se encontra na {5-posicaoDica}ª posição")
                             dica = "X"
                     print()
 
@@ -122,7 +122,7 @@ while jogar == 1:
                             print("_", end=" ")
                     print()
                     print()
-                    input("<Aperte ENTER>".rjust(43))
+        input("<Aperte ENTER>".rjust(43))
 
 
     print("Você quer jogar novamente? (1 = sim/0 = não) ")
